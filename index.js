@@ -16,31 +16,43 @@ var game = (function () {
     var buttonAudioSpeed = 1.5;
     var buttonBrightnessInterval = 500;
 
+    var aiMoveDelay = 900;
+
     //jquery elements
     var $start;
+    var $reset;
     var $strict;
     var $display;
 
     //state to chose if player's turn or ai's turn ai state is 0 so game starts with ai's turn
-    var currentPlayerState = 1;
+    var currentPlayerState = 0;
 
     var aiMoveArray = [];
     var playerMoveArray = [];
 
     var init = function () {
         _get$Elements();
-        _strictHandler();
         _buttonHandler();
         _startHandler();
+        _resetHandler();
+        _strictHandler();
+    };
+
+    var _reset = function(){
+        aiMoveArray = [];
+        playerMoveArray = [];
+        currentPlayerState = 0;
     };
 
     var _startGame = function () {
-        _render()
+        _aiTurn();
+        _render();
     };
 
     //get all elements
     var _get$Elements = function () {
         $start = $("#start");
+        $reset = $("#reset");
         $strict = $("#strict");
         $display = $(".display");
         _getAudio();
@@ -90,6 +102,12 @@ var game = (function () {
             _strictMode();
         });
     };
+    var _resetHandler = function(){
+        $reset.click(function(){
+            _reset();
+        });
+    };
+
     //play audio and brightness change settings for buttons
     var _playAudio = function (audioId) {
         switch (audioId) {
@@ -150,28 +168,54 @@ var game = (function () {
 
     //all game methods
     var _aiTurn = function () {
+        currentPlayerState = 0;
         var randomMove = (Math.floor((Math.random() * 4) + 1) - 1);
-        _gameMove("ai", randomMove);
+        aiMoveArray.push(randomMove);
+        _playAllAiMoves();
+        _render();
+    };
+
+    var _playAllAiMoves = function () {
+        var counter = 0;
+        var i = setInterval(function(){
+            _gameMove("ai", aiMoveArray[counter]);
+            counter++;
+            if(counter === aiMoveArray.length) {
+                clearInterval(i);
+                currentPlayerState = 1;
+            }
+        }, aiMoveDelay);
     };
 
     var _strictMode = function () {
 
     };
 
+    var _compareMoves = function(){
+        for (var i = 0; i < playerMoveArray.length; i++) {
+            if(aiMoveArray[i] !== playerMoveArray[i]){
+                console.log("wrong");
+            }
+        }
+    };
+
     var _gameMove = function (Type, buttonId) {
         if (Type == "player") {
-            buttonAudioSpeed = 1.5;
-            buttonBrightnessInterval = 200;
+            buttonAudioSpeed = .7;
+            buttonBrightnessInterval = 500;
             playerMoveArray.push(buttonId);
-            log(playerMoveArray);
+            _compareMoves();
+            if(playerMoveArray.length === aiMoveArray.length){
+                playerMoveArray = [];
+                _aiTurn();
+            }
         } else {
             buttonAudioSpeed = .5;
             buttonBrightnessInterval = 1000;
-            aiMoveArray.push(buttonId);
-            log(aiMoveArray);
         }
         _playAudio(buttonId);
         _changeButtonBrightness(buttonId, buttonBrightnessInterval);
+
     };
 
     return {
