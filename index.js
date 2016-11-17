@@ -14,7 +14,9 @@ var game = (function () {
     var audioFiles = [];
     var buttons = [];
     var buttonAudioSpeed = 1.5;
-    var onClickOpacity = [1, 0.5];
+
+    var aiMoveArray = [];
+    var playerMoveArray = [];
 
     var init = function () {
         _getAudio();
@@ -32,19 +34,19 @@ var game = (function () {
     var _audioHandler = function () {
         buttons[0].click(function () {
             _playAudio(0);
-            _changeButtonOpacity(0);
+            _onButtonSelect(0);
         });
         buttons[1].click(function () {
             _playAudio(1);
-            _changeButtonOpacity(1);
+            _onButtonSelect(1);
         });
         buttons[2].click(function () {
             _playAudio(2);
-            _changeButtonOpacity(2);
+            _onButtonSelect(2);
         });
         buttons[3].click(function () {
             _playAudio(3);
-            _changeButtonOpacity(3);
+            _onButtonSelect(3);
         });
     };
 
@@ -69,7 +71,7 @@ var game = (function () {
         }
     };
 
-    var _changeButtonOpacity = function (buttonId) {
+    var _onButtonSelect = function (buttonId) {
         switch (buttonId) {
             case 0:
                 buttons[0].css("opacity", "1");

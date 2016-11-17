@@ -33,25 +33,25 @@
         }
 
         body {
-            background: rgb(255,174,39);
-            background: -moz-linear-gradient(-45deg, rgba(255,174,39,1) 0%, rgba(222,73,109,1) 100%);
-            background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,rgba(255,174,39,1)), color-stop(100%,rgba(222,73,109,1)));
-            background: -webkit-linear-gradient(-45deg, rgba(255,174,39,1) 0%,rgba(222,73,109,1) 100%);
-            background: -o-linear-gradient(-45deg, rgba(255,174,39,1) 0%,rgba(222,73,109,1) 100%);
-            background: -ms-linear-gradient(-45deg, rgba(255,174,39,1) 0%,rgba(222,73,109,1) 100%);
-            background: linear-gradient(135deg, rgba(255,174,39,1) 0%,rgba(222,73,109,1) 100%);
-            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffae27', endColorstr='#de496d',GradientType=1 );
+            background: rgb(255, 174, 39);
+            background: -moz-linear-gradient(-45deg, rgba(255, 174, 39, 1) 0%, rgba(222, 73, 109, 1) 100%);
+            background: -webkit-gradient(linear, left top, right bottom, color-stop(0%, rgba(255, 174, 39, 1)), color-stop(100%, rgba(222, 73, 109, 1)));
+            background: -webkit-linear-gradient(-45deg, rgba(255, 174, 39, 1) 0%, rgba(222, 73, 109, 1) 100%);
+            background: -o-linear-gradient(-45deg, rgba(255, 174, 39, 1) 0%, rgba(222, 73, 109, 1) 100%);
+            background: -ms-linear-gradient(-45deg, rgba(255, 174, 39, 1) 0%, rgba(222, 73, 109, 1) 100%);
+            background: linear-gradient(135deg, rgba(255, 174, 39, 1) 0%, rgba(222, 73, 109, 1) 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffae27', endColorstr='#de496d', GradientType=1);
         }
 
         .app {
-            background: rgb(255,174,39);
-            background: -moz-linear-gradient(-45deg, rgba(255,174,39,1) 0%, rgba(222,73,109,1) 100%);
-            background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,rgba(255,174,39,1)), color-stop(100%,rgba(222,73,109,1)));
-            background: -webkit-linear-gradient(-45deg, rgba(255,174,39,1) 0%,rgba(222,73,109,1) 100%);
-            background: -o-linear-gradient(-45deg, rgba(255,174,39,1) 0%,rgba(222,73,109,1) 100%);
-            background: -ms-linear-gradient(-45deg, rgba(255,174,39,1) 0%,rgba(222,73,109,1) 100%);
-            background: linear-gradient(135deg, rgba(255,174,39,1) 0%,rgba(222,73,109,1) 100%);
-            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffae27', endColorstr='#de496d',GradientType=1 );
+            background: rgb(255, 174, 39);
+            background: -moz-linear-gradient(-45deg, rgba(255, 174, 39, 1) 0%, rgba(222, 73, 109, 1) 100%);
+            background: -webkit-gradient(linear, left top, right bottom, color-stop(0%, rgba(255, 174, 39, 1)), color-stop(100%, rgba(222, 73, 109, 1)));
+            background: -webkit-linear-gradient(-45deg, rgba(255, 174, 39, 1) 0%, rgba(222, 73, 109, 1) 100%);
+            background: -o-linear-gradient(-45deg, rgba(255, 174, 39, 1) 0%, rgba(222, 73, 109, 1) 100%);
+            background: -ms-linear-gradient(-45deg, rgba(255, 174, 39, 1) 0%, rgba(222, 73, 109, 1) 100%);
+            background: linear-gradient(135deg, rgba(255, 174, 39, 1) 0%, rgba(222, 73, 109, 1) 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffae27', endColorstr='#de496d', GradientType=1);
             display: flex;
             flex-flow: column nowrap;
             justify-content: center;
@@ -80,42 +80,59 @@
             text-decoration: none;
         }
 
-        div.buttons{
+        div.buttons {
             display: flex;
             flex-flow: row wrap;
             width: 50vh;
             height: 50vh;
         }
-        div.button{
+
+        div.button {
             height: 24vh;
             width: 24vh;
             margin: auto;
             cursor: pointer;
         }
 
-        #button-0{
+        div.controls{
+            margin-bottom:10px;
+        }
+
+        #button-0 {
             background: rgb(6, 180, 74);
             border: 10px solid black;
             border-radius: 60% 0 0 0;
             opacity: 0.5;
         }
-        #button-1{
+
+        #button-1 {
             background: rgb(180, 6, 71);
             border: 10px solid black;
             border-radius: 0 60% 0 0;
             opacity: 0.5;
         }
-        #button-2{
+
+        #button-2 {
             background: rgb(6, 101, 180);
             border: 10px solid black;
             border-radius: 0 0 0 60%;
             opacity: 0.5;
         }
-        #button-3{
+
+        #button-3 {
             background: rgb(179, 180, 6);
             border: 10px solid black;
             border-radius: 0 0 60% 0;
             opacity: 0.5;
+        }
+
+        #display{
+            margin: 3px 0;
+        }
+        .display{
+            background: #720e1d;
+            color: red;
+            padding: 2px 40px;
         }
 
     </style>
@@ -128,13 +145,27 @@
 <audio id="audio-3" src="https://s3.amazonaws.com/freecodecamp/simonSound4.mp3"></audio>
 
 <div class="app">
+    <div class="controls">
+        <div class="container">
+            <div class="col-md-2 col-md-offset-5">
+                <div id="display" class="col-md-12 text-center">
+                    <span class="display">- -</span>
+                </div>
+                <button id="start" class="btn btn-primary btn-block">Start</button>
+                <button id="strict" class="btn btn-warning btn-block">Strict</button>
+            </div>
+        </div>
+
+    </div>
     <div class="buttons">
         <div id="button-0" class="button"></div>
         <div id="button-1" class="button"></div>
         <div id="button-2" class="button"></div>
         <div id="button-3" class="button"></div>
     </div>
-
+    <div class="credits">
+        <h4>BUILT BY <a href="http://www.jaykch.com/" target="_blank">Jay Kumar</a></h4>
+    </div>
     <div class="row">
         <footer class="text-center">
             <a href="https://github.com/jaykch/tic-tac-toe" target="_blank">GitHub Link</a>
