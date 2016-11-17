@@ -15,6 +15,7 @@ var game = (function () {
     var buttons = [];
     var buttonAudioSpeed = 1.5;
     var buttonBrightnessInterval = 500;
+    var strictToggle = 0;
 
     var aiMoveDelay = 900;
 
@@ -38,10 +39,11 @@ var game = (function () {
         _strictHandler();
     };
 
-    var _reset = function(){
+    var _reset = function () {
         aiMoveArray = [];
         playerMoveArray = [];
         currentPlayerState = 0;
+        _render();
     };
 
     var _startGame = function () {
@@ -99,11 +101,14 @@ var game = (function () {
     };
     var _strictHandler = function () {
         $strict.click(function () {
+            if (strictToggle == 0) {
+                strictToggle = 1;
+            } else strictToggle = 0;
             _strictMode();
         });
     };
-    var _resetHandler = function(){
-        $reset.click(function(){
+    var _resetHandler = function () {
+        $reset.click(function () {
             _reset();
         });
     };
@@ -177,10 +182,10 @@ var game = (function () {
 
     var _playAllAiMoves = function () {
         var counter = 0;
-        var i = setInterval(function(){
+        var i = setInterval(function () {
             _gameMove("ai", aiMoveArray[counter]);
             counter++;
-            if(counter === aiMoveArray.length) {
+            if (counter === aiMoveArray.length) {
                 clearInterval(i);
                 currentPlayerState = 1;
             }
@@ -188,14 +193,34 @@ var game = (function () {
     };
 
     var _strictMode = function () {
-
+        if (strictToggle == 1) {
+            $strict.removeClass("btn-warning");
+            $strict.addClass("btn-success");
+        }else{
+            $strict.removeClass("btn-success");
+            $strict.addClass("btn-warning");
+        }
     };
 
-    var _compareMoves = function(){
+    var _compareMoves = function () {
         for (var i = 0; i < playerMoveArray.length; i++) {
-            if(aiMoveArray[i] !== playerMoveArray[i]){
-                console.log("wrong");
+            if (aiMoveArray[i] !== playerMoveArray[i]) {
+                if (strictToggle == 1){
+                    alert("You lost! Start Again!!");
+                    _reset();
+                }else {
+                    alert("Wrong Sequence");
+                    playerMoveArray = [];
+                    _playAllAiMoves();
+                }
             }
+        }
+    };
+
+    var _winHandler = function () {
+        if (playerMoveArray.length == 20) {
+            alert("You Win!!!");
+            _reset();
         }
     };
 
@@ -205,7 +230,8 @@ var game = (function () {
             buttonBrightnessInterval = 500;
             playerMoveArray.push(buttonId);
             _compareMoves();
-            if(playerMoveArray.length === aiMoveArray.length){
+            _winHandler();
+            if (playerMoveArray.length === aiMoveArray.length) {
                 playerMoveArray = [];
                 _aiTurn();
             }
