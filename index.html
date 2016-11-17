@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Simon</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="index.js"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Lato');
+
+        * {
+            -webkit-transition: all 0.7s ease;
+            -moz-transition: all 0.7s ease;
+            -ms-transition: all 0.7s ease;
+            -o-transition: all 0.7s ease;
+            transition: all 0.7s ease;
+            overflow: hidden;
+            font-family: 'Lato', sans-serif;
+            -webkit-touch-callout: none; /* iOS Safari */
+            -webkit-user-select: none; /* Chrome/Safari/Opera */
+            -moz-user-select: none; /* Firefox */
+            -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none;
+            cursor: default;
+            color: white;
+        }
+
+        body {
+            background: rgb(255,174,39);
+            background: -moz-linear-gradient(-45deg, rgba(255,174,39,1) 0%, rgba(222,73,109,1) 100%);
+            background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,rgba(255,174,39,1)), color-stop(100%,rgba(222,73,109,1)));
+            background: -webkit-linear-gradient(-45deg, rgba(255,174,39,1) 0%,rgba(222,73,109,1) 100%);
+            background: -o-linear-gradient(-45deg, rgba(255,174,39,1) 0%,rgba(222,73,109,1) 100%);
+            background: -ms-linear-gradient(-45deg, rgba(255,174,39,1) 0%,rgba(222,73,109,1) 100%);
+            background: linear-gradient(135deg, rgba(255,174,39,1) 0%,rgba(222,73,109,1) 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffae27', endColorstr='#de496d',GradientType=1 );
+        }
+
+        .app {
+            background: rgb(255,174,39);
+            background: -moz-linear-gradient(-45deg, rgba(255,174,39,1) 0%, rgba(222,73,109,1) 100%);
+            background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,rgba(255,174,39,1)), color-stop(100%,rgba(222,73,109,1)));
+            background: -webkit-linear-gradient(-45deg, rgba(255,174,39,1) 0%,rgba(222,73,109,1) 100%);
+            background: -o-linear-gradient(-45deg, rgba(255,174,39,1) 0%,rgba(222,73,109,1) 100%);
+            background: -ms-linear-gradient(-45deg, rgba(255,174,39,1) 0%,rgba(222,73,109,1) 100%);
+            background: linear-gradient(135deg, rgba(255,174,39,1) 0%,rgba(222,73,109,1) 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffae27', endColorstr='#de496d',GradientType=1 );
+            display: flex;
+            flex-flow: column nowrap;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            width: 100vw;
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffae27', endColorstr='#de496d', GradientType=1);
+        }
+
+        a {
+            -webkit-transition: all 0.5s ease;
+            -moz-transition: all 0.5s ease;
+            -ms-transition: all 0.5s ease;
+            -o-transition: all 0.5s ease;
+            transition: all 0.5s ease;
+            cursor: pointer;
+        }
+
+        a, a:focus, a:visited {
+            color: #0e0b49;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: rgba(14, 11, 73, 0.59);
+            text-decoration: none;
+        }
+
+        div.buttons{
+            display: flex;
+            flex-flow: row wrap;
+            width: 50vh;
+            height: 50vh;
+            background: rgba(72, 221, 32, 0.89);
+            border-radius: 40%;
+        }
+        div.button{
+            height: 24vh;
+            width: 24vh;
+            background: rgba(221, 57, 103, 0.89);
+            margin: auto;
+            border: 1px solid black;
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+<body>
+<audio id="audio-1" src="https://s3.amazonaws.com/freecodecamp/simonSound1.mp3">
+</audio>
+<audio id="audio-2" src="https://s3.amazonaws.com/freecodecamp/simonSound2.mp3"></audio>
+<audio id="audio-3" src="https://s3.amazonaws.com/freecodecamp/simonSound3.mp3"></audio>
+<audio id="audio-4" src="https://s3.amazonaws.com/freecodecamp/simonSound4.mp3"></audio>
+
+<div class="app">
+    <div class="buttons">
+        <div id="button-0" class="button"></div>
+        <div id="button-1" class="button"></div>
+        <div id="button-2" class="button"></div>
+        <div id="button-3" class="button"></div>
+    </div>
+
+    <div class="row">
+        <footer class="text-center">
+            <a href="https://github.com/jaykch/tic-tac-toe" target="_blank">GitHub Link</a>
+        </footer>
+    </div>
+</div>
+
+
+</body>
+</html>
