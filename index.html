@@ -85,26 +85,47 @@
             flex-flow: row wrap;
             width: 50vh;
             height: 50vh;
-            background: rgba(72, 221, 32, 0.89);
-            border-radius: 40%;
         }
         div.button{
             height: 24vh;
             width: 24vh;
-            background: rgba(221, 57, 103, 0.89);
             margin: auto;
-            border: 1px solid black;
             cursor: pointer;
+        }
+
+        #button-0{
+            background: rgb(6, 180, 74);
+            border: 10px solid black;
+            border-radius: 60% 0 0 0;
+            opacity: 0.5;
+        }
+        #button-1{
+            background: rgb(180, 6, 71);
+            border: 10px solid black;
+            border-radius: 0 60% 0 0;
+            opacity: 0.5;
+        }
+        #button-2{
+            background: rgb(6, 101, 180);
+            border: 10px solid black;
+            border-radius: 0 0 0 60%;
+            opacity: 0.5;
+        }
+        #button-3{
+            background: rgb(179, 180, 6);
+            border: 10px solid black;
+            border-radius: 0 0 60% 0;
+            opacity: 0.5;
         }
 
     </style>
 </head>
 <body>
-<audio id="audio-1" src="https://s3.amazonaws.com/freecodecamp/simonSound1.mp3">
+<audio id="audio-0" src="https://s3.amazonaws.com/freecodecamp/simonSound1.mp3">
 </audio>
-<audio id="audio-2" src="https://s3.amazonaws.com/freecodecamp/simonSound2.mp3"></audio>
-<audio id="audio-3" src="https://s3.amazonaws.com/freecodecamp/simonSound3.mp3"></audio>
-<audio id="audio-4" src="https://s3.amazonaws.com/freecodecamp/simonSound4.mp3"></audio>
+<audio id="audio-1" src="https://s3.amazonaws.com/freecodecamp/simonSound2.mp3"></audio>
+<audio id="audio-2" src="https://s3.amazonaws.com/freecodecamp/simonSound3.mp3"></audio>
+<audio id="audio-3" src="https://s3.amazonaws.com/freecodecamp/simonSound4.mp3"></audio>
 
 <div class="app">
     <div class="buttons">
